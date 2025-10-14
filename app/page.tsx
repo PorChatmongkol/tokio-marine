@@ -1,103 +1,114 @@
+"use client";
+import { ShieldCheck, TrendingUp, Award } from "lucide-react";
+import { useEffect } from "react";
+import AOS from "aos";
+// import "aos/dist/aos.css";
 import Image from "next/image";
+import MainInsurance from "./components/tokio-beyond";
 
 export default function Home() {
+   useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-6 overflow-hidden ">
+        {/* Background decorative elements */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          data-aos="fade"
+          data-aos-delay="200"
+        >
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-600/20 to-transparent rounded-full"></div>
+          <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-slate-800/30"></div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="max-w-7xl mx-auto relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Content */}
+            <div
+              className="space-y-8 lg:pr-8"
+              data-aos="fade-right"
+              data-aos-delay="400"
+            >
+              {/* Trust badges */}
+              <div className="flex flex-wrap gap-4">
+                <div className="inline-flex items-center bg-slate-800/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-700/50 shadow-sm">
+                  <ShieldCheck className="w-4 h-4 text-blue-400 mr-2" />
+                  <span className="text-blue-400 font-medium text-sm">
+                    ความปลอดภัยที่เชื่อถือได้
+                  </span>
+                </div>
+                <div className="inline-flex items-center bg-slate-800/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-700/50 shadow-sm">
+                  <TrendingUp className="w-4 h-4 text-orange-400 mr-2" />
+                  <span className="text-orange-400 font-medium text-sm">
+                    การเติบโตที่ยั่งยืน
+                  </span>
+                </div>
+                <div className="inline-flex items-center bg-slate-800/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-700/50 shadow-sm">
+                  <Award className="w-4 h-4 text-emerald-400 mr-2" />
+                  <span className="text-emerald-400 font-medium text-sm">
+                    รางวัลความเป็นเลิศ
+                  </span>
+                </div>
+              </div>
+
+              {/* Main heading */}
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-6xl font-black leading-tight text-white font-sans">
+                  วางแผนอนาคต
+                  <span className="block text-blue-400">
+                    ด้วยประกันควบการลงทุน
+                  </span>
+                </h1>
+
+                <h2 className="text-xl md:text-5xl font-semibold text-orange-400">
+                  วรศักดิ์ ทับห่วง (หนุ่ม)
+                </h2>
+
+                <div className="space-y-4">
+                  <p className="text-base text-slate-300 leading-relaxed">
+                    ใกล้เคียงคำว่ากองทุนสำหรับการเกษียณได้มากที่สุด
+                    เพราะกองทุนที่โตเกียวมารีนเลือกมาเป็นกองทุนที่มีผลประกอบการยอดเยี่ยม
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Image */}
+            <div className="relative" data-aos="fade-left" data-aos-delay="400">
+              <div className="relative z-10">
+                {/* Main image container */}
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-slate-700/30">
+                  <Image
+                    src={"/profile-1.jpg"}
+                    alt="วรศักดิ์ ทับห่วง - ที่ปรึกษาการเงินมืออาชีพ"
+                    className=" object-cover transform hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    width={600}
+                    height={600}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent"></div>
+                </div>
+              </div>
+
+              {/* Background decoration */}
+              <div className="absolute inset-0 -z-10">
+                <div className="absolute top-8 right-8 w-72 h-72 bg-gradient-to-br from-blue-600/30 to-orange-500/20 rounded-full opacity-60 blur-3xl"></div>
+                <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-gradient-to-tr from-orange-500/30 to-emerald-500/20 rounded-full opacity-40 blur-2xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <MainInsurance/>
+    </>
   );
 }
