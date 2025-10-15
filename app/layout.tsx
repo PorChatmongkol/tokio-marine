@@ -17,11 +17,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Noum Tokio-Marine",
   description: "ตัวแทนขายประกันชั้นนำโตเกียวมารีน",
-  icons:{
-    icon: "/icon.png"
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
   },
-  
 };
+
 
 export default function RootLayout({
   children,
