@@ -75,7 +75,7 @@ const contacts = [
 
 export default function Footer() {
   return (
-    <footer role="contentinfo" className="bg-white text-gray-100 text-sm pt-12 pb-6 px-6 md:px-12">
+    <footer role="contentinfo" className="bg-gray-100  text-sm pt-12 pb-6 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-[#2C5F7A] pb-10">
 
         {/* เกี่ยวกับเรา */}
