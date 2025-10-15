@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: "ตัวแทนขายประกันชั้นนำโตเกียวมารีน",
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
     ],
   },
 };
