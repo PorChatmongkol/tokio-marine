@@ -1,2 +1,3 @@
 User-agent: *
-Disallow:
+allow:
+Sitemap: https://tokio-marine.vercel.app/sitemap.xml
