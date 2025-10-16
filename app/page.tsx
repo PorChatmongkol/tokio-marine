@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
+import Head from "next/head";
 import MainInsurance from "./components/tokio-beyond";
 import OurServices from "./components/OurService";
 
@@ -16,6 +17,25 @@ export default function Home() {
   }, []);
   return (
     <>
+    <Head>
+        <title>ประกันโตเกียวมารีน</title>
+        <meta name="description" content="ประกันชั้นนำโดยตัวแทนชั้นนำ" />
+        <meta name="keywords" content="ประกันควบการลงทุน ประกันสุขภาพ ประกัน2025" />
+        <meta name="author" content="วรศักดิ์ ทับห่วง Vorasak Tubhoung หนุ่ม" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google-site-verification" content="NvmRC8mrLqVIPWOZXVWLoO6l0eB8vB-sBx9uaJkjt4E" />
+
+        {/* ✅ Open Graph สำหรับแชร์ Facebook / LINE */}
+        {/* <meta property="og:title" content="ร้านขายรองเท้าฟุตบอลของแท้" />
+        <meta property="og:description" content="รองเท้าฟุตบอลราคาพิเศษ ส่งฟรีทั่วไทย!" />
+        <meta property="og:image" content="https://example.com/images/shoe.jpg" />
+        <meta property="og:url" content="https://example.com/" />
+        <meta property="og:type" content="website" /> */}
+
+       
+       
+      </Head>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-6 overflow-hidden ">
         {/* Background decorative elements */}
