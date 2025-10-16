@@ -2,7 +2,7 @@
 import { ShieldCheck, TrendingUp, Award ,User } from "lucide-react";
 import { useEffect } from "react";
 import AOS from "aos";
-// import "aos/dist/aos.css";
+import "aos/dist/aos.css";
 import Image from "next/image";
 import MainInsurance from "./components/tokio-beyond";
 import OurServices from "./components/OurService";

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Users, Award, Clock, Calendar } from "lucide-react";
 import AOS from "aos";
-import "aos/dist/aos.css";
+// import "aos/dist/aos.css";
 
 // 🟩 ประเภทข้อมูล (Type Definitions)
 interface Benefit {
@@ -78,7 +78,7 @@ export default function MainInsurance() {
                 alt={`Tokio Beyond Gallery ${index + 1}`}
                 width={800}
                 height={600}
-                className="w-full h-full object-cover"
+                className=" object-cover"
               />
             </div>
           ))}
