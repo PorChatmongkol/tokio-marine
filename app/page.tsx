@@ -33,6 +33,7 @@ export default function Home() {
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google-site-verification" content="NvmRC8mrLqVIPWOZXVWLoO6l0eB8vB-sBx9uaJkjt4E" />
+       
 
         {/* Open Graph */}
         <meta property="og:title" content="ประกันโตเกียวมารีน - ตัวแทนมืออาชีพ" />

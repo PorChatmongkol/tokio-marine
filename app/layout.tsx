@@ -22,6 +22,9 @@ export const metadata: Metadata = {
       { url: "/icon.png", sizes: "192x192", type: "image/png" },
     ],
   },
+  verification: {
+    google: 'NvmRC8mrLqVIPWOZXVWLoO6l0eB8vB-sBx9uaJkjt4E',
+  },
 };
 
 
