@@ -17,6 +17,7 @@ import {
   Shield,
   Zap,
   FileText,
+
 } from "lucide-react";
 import Image from "next/image";
 
@@ -156,14 +157,7 @@ const DropdownMenu = ({
             })}
           </div>
 
-          <div className="px-6 py-3 border-t border-gray-100">
-            <Link
-              href="/services"
-              className="flex items-center justify-center w-full py-2 px-4 rounded-xl font-semibold text-sm text-white transition-all duration-200 hover:opacity-90 bg-[#17303B]"
-            >
-              ดูแผนทั้งหมด →
-            </Link>
-          </div>
+          
         </div>
       )}
 

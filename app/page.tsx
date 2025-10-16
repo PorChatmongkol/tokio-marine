@@ -1,10 +1,11 @@
 "use client";
-import { ShieldCheck, TrendingUp, Award } from "lucide-react";
+import { ShieldCheck, TrendingUp, Award ,User } from "lucide-react";
 import { useEffect } from "react";
 import AOS from "aos";
 // import "aos/dist/aos.css";
 import Image from "next/image";
 import MainInsurance from "./components/tokio-beyond";
+import OurServices from "./components/OurService";
 
 export default function Home() {
    useEffect(() => {
@@ -107,8 +108,88 @@ export default function Home() {
         </div>
       </section>
 
-
+      {/* Tokio Beyond */}
       <MainInsurance/>
+
+      {/* About Me Section */}
+      <section className="bg-[#FAFAF8] py-16" id="about">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-[#A78B61] mb-3">
+            เกี่ยวกับตัวแทนประกัน
+          </h2>
+          <p className="text-gray-600 text-sm md:text-base">
+            เพราะความมั่นคงของคุณคือภารกิจของเรา
+          </p>
+        </div>
+
+        {/* Content */}
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          {/* Left: Profile Image */}
+          <div className="flex justify-center">
+            <div className="relative">
+              <Image
+                src="/about-img.jpg"
+                alt="Insurance Agent"
+                width={300}
+                height={400}
+                className=" object-cover rounded-2xl shadow-md border border-[#EAE7E1]"
+              />
+              <div className="absolute -bottom-3 -right-3 bg-[#A78B61] text-white text-xs font-semibold px-4 py-1 rounded-full shadow-sm">
+                ตัวแทนมืออาชีพ
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Info */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-semibold text-[#17303B]">
+              นายวรศักดิ์ ทับห่วง
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam at ab recusandae libero deserunt vel, aliquid, ipsum, quo consequuntur sunt! Excepturi inventore explicabo voluptas, ab molestias repellat eius sit!
+            </p>
+
+            {/* Key Points */}
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="w-5 h-5 text-[#A78B61] mt-0.5" />
+                <span className="text-gray-700 text-sm">
+                  ได้รับใบอนุญาตตัวแทนประกันชีวิตและประกันสุขภาพจาก คปภ.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Award className="w-5 h-5 text-[#A78B61] mt-0.5" />
+                <span className="text-gray-700 text-sm">
+                  รางวัลตัวแทนยอดเยี่ยม 3 ปีซ้อน (2022–2024)
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <User className="w-5 h-5 text-[#A78B61] mt-0.5" />
+                <span className="text-gray-700 text-sm">
+                  ให้คำปรึกษาอย่างตรงไปตรงมา ดูแลตลอดอายุกรมธรรม์
+                </span>
+              </li>
+            </ul>
+
+            {/* CTA */}
+            <div className="pt-4">
+              <a
+                href="#contact"
+                className="inline-block bg-[#A78B61] text-white px-6 py-3 rounded-xl hover:bg-[#92754D] transition text-sm font-medium shadow-sm"
+              >
+                ติดต่อขอคำปรึกษา
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    {/* บริการประกันอื่นๆ */}
+    <OurServices/>
     </>
   );
 }

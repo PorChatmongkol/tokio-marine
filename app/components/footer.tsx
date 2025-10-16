@@ -5,18 +5,12 @@ import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 const socialLinks = [
   {
     icon: FaFacebookF,
-    href: "https://facebook.com/yourpage",
+    href: "https://www.facebook.com/nmnmfrv1912",
     label: "Facebook",
     bgColor: "bg-[#2C5F7A]",
     hoverColor: "hover:bg-[#1877F2]",
   },
-  {
-    icon: FaInstagram,
-    href: "https://instagram.com/yourpage",
-    label: "Instagram",
-    bgColor: "bg-[#2C5F7A]",
-    hoverColor: "hover:bg-[#E1306C]",
-  },
+  
   {
     icon: FaLinkedinIn,
     href: "https://linkedin.com/in/yourprofile",
