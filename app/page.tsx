@@ -7,6 +7,7 @@ import Image from "next/image";
 import Head from "next/head";
 import MainInsurance from "./components/tokio-beyond";
 import OurServices from "./components/OurService";
+import TrustedClients from "./components/TrustedClients";
 
 export default function Home() {
   useEffect(() => {
@@ -208,6 +209,9 @@ export default function Home() {
 
       {/* บริการประกันอื่นๆ */}
       <OurServices />
+
+      {/* ลูกค้าที่ไว้วางใจ */}
+      <TrustedClients />
     </>
   );
 }

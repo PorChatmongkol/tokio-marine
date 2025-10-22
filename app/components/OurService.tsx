@@ -151,7 +151,7 @@ const OurServices = () => {
                 </ul>
                 <button
                   onClick={() => handleClick(`/${service.path}`)}
-                  className="w-full bg-gradient-to-r from-[#C5A572] to-[#D6B55D] text-white font-semibold py-2 px-4 rounded-lg hover:shadow-md transition-all duration-300"
+                  className="w-full cursor-pointer bg-gradient-to-r from-[#C5A572] to-[#D6B55D] text-white font-semibold py-2 px-4 rounded-lg hover:shadow-md transition-all duration-300"
                 >
                   อ่านเพิ่มเติม →
                 </button>
