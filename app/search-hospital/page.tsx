@@ -98,7 +98,7 @@ const SearchHospitals = () => {
             <input
               type="search"
               placeholder="พิมพ์ชื่อโรงพยาบาลหรือจังหวัด..."
-              className="w-full pl-12 pr-10 py-2.5 rounded-lg border border-[#EAE7E1] focus:border-[#A78B61] focus:ring-0 outline-none transition text-sm"
+              className="w-full pl-12 pr-10 py-2.5 rounded-4xl border border-[#EAE7E1] focus:border-[#A78B61] focus:ring-0 outline-none transition text-sm"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -118,7 +118,7 @@ const SearchHospitals = () => {
               <button
                 key={id}
                 onClick={() => setSelectedRegion(id)}
-                className={`px-3 py-2 text-sm rounded-lg border transition-all ${
+                className={`px-3 py-2 text-sm rounded-4xl border transition-all ${
                   selectedRegion === id
                     ? "bg-[#A78B61] text-white border-[#A78B61]"
                     : "border-[#EAE7E1] text-[#A78B61] hover:bg-[#F3EFE7]"
