@@ -239,7 +239,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              className="group relative inline-flex items-center justify-center px-8 py-4 bg-[#A37500] text-white font-semibold rounded-4xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
                 ติดต่อเรา
@@ -251,8 +251,8 @@ export default function AboutPage() {
             </a>
 
             <a
-              href="/services"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border-2 border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+              href="/#services"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-4xl border-2 border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
               ดูบริการของเรา
             </a>
