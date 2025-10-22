@@ -69,15 +69,15 @@ const SearchHospitals = () => {
   const selectedRegionData = regions.find((r) => r.id === selectedRegion);
 
   return (
-    <main className="min-h-screen bg-[#F8F7F3] text-[#2E2E2E]">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-[#2E2E2E]">
       {/* Header */}
-      <header className="bg-white border-b border-[#EAE7E1]">
+      <header >
         <div className="max-w-5xl mx-auto px-4 py-8 text-center">
           <div className="inline-flex items-center gap-3 mb-2 justify-center">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#A78B61]/90 text-white">
               <Building2 className="w-5 h-5" />
             </div>
-            <h1 className="text-2xl font-semibold text-[#A78B61]">
+            <h1 className="text-2xl font-semibold text-[#A37500]">
               ค้นหาโรงพยาบาลคู่สัญญา
             </h1>
           </div>
