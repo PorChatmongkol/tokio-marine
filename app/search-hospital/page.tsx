@@ -120,7 +120,7 @@ const SearchHospitals = () => {
                 onClick={() => setSelectedRegion(id)}
                 className={`px-3 py-2 text-sm rounded-4xl border transition-all ${
                   selectedRegion === id
-                    ? "bg-[#A78B61] text-white border-[#A78B61]"
+                    ? "bg-[#A37500] text-white border-[#A78B61]"
                     : "border-[#EAE7E1] text-[#A78B61] hover:bg-[#F3EFE7]"
                 }`}
               >
@@ -157,7 +157,7 @@ const SearchHospitals = () => {
                   className="border border-[#EAE7E1] rounded-xl p-4 hover:bg-[#FAF9F6] transition"
                 >
                   <div className="flex gap-3">
-                    <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#A78B61]/90 text-white">
+                    <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#A37500]/90 text-white">
                       <Building2 className="w-5 h-5" />
                     </div>
                     <div>

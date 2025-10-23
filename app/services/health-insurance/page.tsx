@@ -66,33 +66,7 @@ const LifeInsurancePage = () => {
                 </p>
               </div>
 
-              {/* Quick Stats */}
-              <div className="grid grid-cols-2 gap-6">
-                <div
-                  className="bg-white rounded-2xl p-6 border-2"
-                  style={{ borderColor: "#17303B" }}
-                >
-                  <div
-                    className="text-3xl font-bold"
-                    style={{ color: "#17303B" }}
-                  >
-                    10M+
-                  </div>
-                  <div className="text-gray-600">วงเงินคุ้มครองสูงสุด</div>
-                </div>
-                <div
-                  className="bg-white rounded-2xl p-6 border-2"
-                  style={{ borderColor: "#A37500" }}
-                >
-                  <div
-                    className="text-3xl font-bold"
-                    style={{ color: "#A37500" }}
-                  >
-                    8.5%
-                  </div>
-                  <div className="text-gray-600">ผลตอบแทนเฉลี่ย/ปี</div>
-                </div>
-              </div>
+              
             </div>
 
             {/* Right Image */}
