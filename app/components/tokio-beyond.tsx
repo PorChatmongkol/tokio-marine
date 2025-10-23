@@ -32,6 +32,10 @@ export default function MainInsurance() {
     "/tk-8.png",
   ];
 
+  const benefits: string[] = [
+    "/tokio-beyond-1.jpg",
+  ];
+
   // 🔹 ใช้ AOS + โหลดหน้า
   useEffect(() => {
     AOS.init({ duration: 1000, once: true, offset: 100 });
@@ -82,6 +86,42 @@ export default function MainInsurance() {
               />
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mt-8 p-4" data-aos="fade-up">
+        <div className="flex justify-center  mx-auto  ">
+          <Image
+            src={"/tokio-beyond-1.jpg"}
+            alt="Tokio Beyond Main"
+            width={900}
+            height={600}
+            className=" object-cover "
+          />
+        </div>
+        <h2 className="text-5xl font-bold text-[#D69E2E] mb-4 p-4 text-center">
+          17 กองทุนให้เลือกลงทุน 
+        </h2>
+        <div className="flex justify-center  mx-auto">
+          <Image
+            src={"/tokio-beyond-2.jpg"}
+            alt="Tokio Beyond Main"
+            width={900}
+            height={600}
+            className=" object-cover "
+          />
+        </div>
+        <h2 className="text-5xl font-bold text-[#D69E2E] mb-4 p-4 text-center">
+          ความเสี่ยง
+        </h2>
+        <div className="flex justify-center  mx-auto">
+          <Image
+            src={"/tokio-beyond-3.jpg"}
+            alt="Tokio Beyond Main"
+            width={900}
+            height={600}
+            className=" object-cover "
+          />
         </div>
       </section>
     </div>
