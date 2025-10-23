@@ -96,11 +96,11 @@ const LifeInsurancePage = () => {
                 ประกันชีวิตแบบตลอดชีพ โตเกียว ออล ไลฟ์ <br />
                 <span style={{ color: "#A37500" }}>(Tokio All Life)</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              {/* <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Accusamus, minus cum nisi quasi corporis non praesentium eveniet
                 similique aliquid inventore?
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
@@ -109,10 +109,10 @@ const LifeInsurancePage = () => {
       
       {/* Gallery */}
             <div className="mt-8 p-4" data-aos="fade-up">
-              <h2 className="text-xl lg:text-3xl font-bold mb-6 text-red-500 text-center">
+              {/* <h2 className="text-xl lg:text-3xl font-bold mb-6 text-red-500 text-center">
                 !!! เลือกประกันสุขภาพเหมาจ่าย โตเกียวมารีนวันนี้
                 เพื่ออิสระทางการเงินในยามเจ็บป่วย !!!
-              </h2>
+              </h2> */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {additionalImages.map((img, index) => (
                   <div

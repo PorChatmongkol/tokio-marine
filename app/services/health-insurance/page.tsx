@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 
 import Image from "next/image";
 
-const LifeInsurancePage = () => {
+const HealthInsurancePage = () => {
   // Mock images - using placeholder for demo
   const insuranceImages = [
     "/577751.jpg",
@@ -226,4 +226,4 @@ const LifeInsurancePage = () => {
   );
 };
 
-export default LifeInsurancePage;
+export default HealthInsurancePage;
