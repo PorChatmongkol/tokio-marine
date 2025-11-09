@@ -135,7 +135,10 @@ function SocialIcon({
   color,
 }: {
   href: string;
-  Icon: React.ComponentType<{ className?: string }>;
+  Icon: React.ComponentType<{
+    className?: string;
+    style?: React.CSSProperties; // ✅ เพิ่มบรรทัดนี้
+  }>;
   label: string;
   color: string;
 }) {
