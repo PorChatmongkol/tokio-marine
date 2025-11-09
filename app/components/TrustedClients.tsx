@@ -22,67 +22,74 @@ const TrustedCustomers = () => {
   ];
 
   return (
-    <div className="relative w-full mx-auto px-6 py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 overflow-hidden">
-      {/* พื้นหลังเอฟเฟกต์แสงทอง */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.05),transparent_70%)]" />
+    <section className="relative w-full mx-auto py-28 px-6 bg-gradient-to-b from-[#FAFAF8] via-[#F7F6F3] to-[#F1EEEA] overflow-hidden">
+      {/* พื้นหลังแสงทองและเงาแบบ Apple */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,180,120,0.08),transparent_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#F1EEE9]/40 via-transparent to-transparent" />
 
-      {/* หัวข้อ Section */}
-      <div className="relative z-10 text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#B8860B] drop-shadow-[0_2px_10px_rgba(255,215,0,0.3)]">
+      {/* Header Section */}
+      <div className="relative z-10 text-center mb-20" data-aos="fade-up">
+        <h2 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#B89E63] to-[#E6D6A5] tracking-tight">
           ลูกค้าที่วางใจเรา
         </h2>
-        <p className="mt-4 text-lg text-gray-300">
-          พันธมิตรและลูกค้าชั้นนำที่มอบความไว้วางใจในคุณภาพและบริการของเรา
+        <p className="mt-5 text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+          พันธมิตรและลูกค้าผู้ทรงเกียรติที่มอบความไว้วางใจให้เรา
+          ดูแลความมั่นคงในทุกช่วงชีวิตอย่างมืออาชีพ
         </p>
-        <div className="w-32 h-[2px] mx-auto mt-6 rounded-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] shadow-[0_0_10px_rgba(255,215,0,0.3)]" />
+        <div className="w-24 h-[2px] mx-auto mt-8 rounded-full bg-gradient-to-r from-[#CBB57E] to-[#E6D6A5]" />
       </div>
 
-      {/* Swiper Section */}
+      {/* Swiper Gallery */}
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
-        spaceBetween={30}
-        speed={800}
+        spaceBetween={40}
+        speed={1000}
         loop
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 2800, disableOnInteraction: false }}
         breakpoints={{
           320: { slidesPerView: 1 },
-          640: { slidesPerView: 3 },
-          1024: { slidesPerView: 5 },
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 4 },
         }}
         className="custom-swiper relative z-10"
       >
         {customers.map((customer) => (
           <SwiperSlide key={customer.id}>
-            <div className="bg-gradient-to-b from-slate-800 to-slate-900 border border-[#FFD700]/20 rounded-2xl shadow-[0_4px_20px_rgba(255,215,0,0.05)] hover:shadow-[0_6px_25px_rgba(255,215,0,0.15)] transition-all duration-500 overflow-hidden hover:-translate-y-1 hover:scale-[1.03]">
-              <div className="relative w-full h-80 overflow-hidden">
+            <div className="group relative overflow-hidden rounded-3xl bg-white/60 backdrop-blur-sm border border-[#E8E6E0]/60 shadow-[0_8px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-700 hover:-translate-y-2">
+              <div className="relative w-full h-80 md:h-96 overflow-hidden">
                 <Image
                   src={customer.image}
                   alt={`ลูกค้ารายที่ ${customer.id}`}
                   fill
-                  className="object-cover w-full h-full transition-transform duration-700 hover:scale-110"
+                  className="object-cover w-full h-full scale-105 group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-60 group-hover:opacity-30 transition duration-700" />
               </div>
+
+              {/* Glow highlight */}
+              <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-[#B89E63]/0 via-[#E6D6A5]/70 to-[#B89E63]/0 opacity-0 group-hover:opacity-100 transition duration-700" />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Custom Swiper Pagination */}
+      {/* Custom Pagination */}
       <style jsx global>{`
         .custom-swiper .swiper-pagination-bullet {
-          background: linear-gradient(45deg, #b8860b, #ffd700);
+          background: linear-gradient(90deg, #b89e63, #e6d6a5);
           opacity: 0.3;
+          width: 8px;
+          height: 8px;
           transition: all 0.3s ease;
         }
         .custom-swiper .swiper-pagination-bullet-active {
           opacity: 1;
-          box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-          transform: scale(1.3);
+          transform: scale(1.4);
+          box-shadow: 0 0 8px rgba(232, 210, 150, 0.8);
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 

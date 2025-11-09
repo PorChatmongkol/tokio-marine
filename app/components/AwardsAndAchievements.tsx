@@ -16,7 +16,7 @@ const AwardsAndAchievements = () => {
       id: 2,
       title: 'รางวัลนวัตกรรมโดดเด่น',
       description:
-        'ได้รับการยอมรับจากภาครัฐในการพัฒนาเทคโนโลยีใหม่ที่ช่วยยกระดับประสบการณ์ของลูกค้า',
+        'ยกระดับเทคโนโลยีเพื่อประสบการณ์ลูกค้าในยุคใหม่อย่างต่อเนื่อง',
       image: '/award-2.jpg',
     },
     {
@@ -30,58 +30,71 @@ const AwardsAndAchievements = () => {
       id: 4,
       title: 'Top Partner Recognition',
       description:
-        'ได้รับการรับรองจากพันธมิตรชั้นนำระดับโลกในฐานะพันธมิตรทางธุรกิจที่มีความน่าเชื่อถือสูง',
+        'ได้รับการยอมรับจากพันธมิตรระดับโลกในฐานะผู้นำที่น่าเชื่อถือ',
       image: '/award-4.jpg',
     },
   ];
 
   return (
-    <section className="relative w-full mx-auto px-6 py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 overflow-hidden">
-      {/* พื้นหลังทองบาง ๆ */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,215,0,0.05),transparent_70%)]"></div>
+    <section className="relative w-full mx-auto px-6 py-32 bg-black overflow-hidden">
+      {/* แสงพื้นหลัง Apple-style */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-black to-black" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
 
-      {/* หัวข้อ */}
-      <div className="text-center mb-16 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#B8860B] drop-shadow-[0_2px_10px_rgba(255,215,0,0.3)]">
-          ผลงานและรางวัลของเรา
-        </h2>
-        <p className="text-gray-300 mt-4 text-lg">
-          ความภาคภูมิใจและความสำเร็จที่สะท้อนถึงคุณภาพและความทุ่มเทของเรา
-        </p>
-        <div className="w-32 h-[2px] bg-gradient-to-r from-[#FFD700] to-[#B8860B] mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(255,215,0,0.3)]"></div>
+      {/* หัวข้อแบบ Keynote */}
+      <div className="relative z-10 text-center mb-24">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-gray-100 via-white to-gray-400 bg-clip-text text-transparent"
+        >
+          Our Awards & Achievements
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto"
+        >
+          ความสำเร็จที่สะท้อนถึงความทุ่มเท นวัตกรรม และคุณภาพระดับโลกของเรา
+        </motion.p>
       </div>
 
-      {/* แสดงรางวัล */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 relative z-10">
+      {/* การ์ดรางวัล Apple-style */}
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
         {awards.map((award, index) => (
           <motion.div
             key={award.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15, duration: 0.6 }}
+            transition={{ delay: index * 0.15, duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-b from-slate-800 to-slate-900 border border-[#FFD700]/20 rounded-2xl shadow-[0_4px_20px_rgba(255,215,0,0.05)] hover:shadow-[0_6px_25px_rgba(255,215,0,0.15)] transition-all duration-500 overflow-hidden hover:-translate-y-1 hover:scale-[1.03]"
+            className="group relative bg-gradient-to-b from-gray-900/80 to-black rounded-3xl overflow-hidden  transition-all duration-700"
           >
             <div className="relative w-full h-64 overflow-hidden">
               <Image
                 src={award.image}
                 alt={award.title}
                 fill
-                className="object-cover transition-transform duration-700 hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
             </div>
             <div className="p-6 text-center">
-              <h3 className="text-xl font-semibold text-[#FFD700] mb-3">
+              <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#A37500] transition-colors duration-300">
                 {award.title}
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-gray-400 text-sm leading-relaxed">
                 {award.description}
               </p>
             </div>
           </motion.div>
         ))}
       </div>
+
+      {/* เอฟเฟกต์แสง Spotlight */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-radial from-white/10 to-transparent blur-3xl"></div>
     </section>
   );
 };

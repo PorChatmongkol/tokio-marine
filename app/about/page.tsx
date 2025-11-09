@@ -12,103 +12,75 @@ export default function AboutPage() {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
 
-    // Initialize AOS
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
-      once: true, // เล่นแอนิเมชันแค่ครั้งเดียว
+      once: true,
     });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <main className="min-h-screen bg-white text-gray-800">
+    <main className="min-h-screen bg-white text-gray-800 font-sans selection:bg-[#A37500]/20">
       {/* Hero Section */}
-      <section
-        className="relative py-32 px-6 overflow-hidden min-h-[85vh] flex items-center"
-        data-aos="fade-up"
-      >
-        {/* Background Image with Overlay */}
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen flex items-center overflow-hidden">
+        {/* Background */}
         <div className="absolute inset-0">
           <img
             src="/background.jpg"
-            alt="Background"
-            className="w-full h-full object-cover"
+            alt=""
+            className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/85 to-slate-800/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-transparent" />
         </div>
 
-        {/* Animated Overlay Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-blue-500/20 via-cyan-400/10 to-transparent rounded-full blur-3xl"
-            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-          ></div>
-          <div
-            className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-amber-500/20 via-orange-400/10 to-transparent rounded-full blur-3xl"
-            style={{ transform: `translateY(${scrollY * -0.2}px)` }}
-          ></div>
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000,transparent)]"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-amber-500/20 to-amber-600/20 backdrop-blur-sm border border-amber-400/30 rounded-full">
-            <span className="text-amber-300 text-sm font-medium tracking-wide">
-              ABOUT US
-            </span>
-          </div>
-
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center md:text-left">
+          <h1
+            className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8 tracking-tight"
+            data-aos="fade-up"
+          >
             เกี่ยวกับเรา
           </h1>
-
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mb-8"></div>
-
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-light">
-            บริษัท โตเกียวมารีน เป็นผู้นำด้านประกันภัยในประเทศไทย
-            <br className="hidden md:block" />
-            มุ่งเน้นให้บริการลูกค้าด้วยคุณภาพและความเชื่อถือระดับโลก
+          <p
+            className="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            โตเกียวมารีน บริษัทประกันภัยแรกในประเทศญี่ปุ่น ก่อตั้งขึ้นในปี
+            2422 เรานำเสนอผลิตภัณฑ์ประกันภัยและประกันชีวิตที่หลากหลาย
+            ครอบคลุมกว่า 45 ประเทศทั่วโลก พร้อมความมั่นคงทางการเงิน
+            และความมุ่งมั่นที่จะเป็นพันธมิตรที่คุณไว้วางใจได้เสมอ
           </p>
         </div>
       </section>
 
       {/* Vision Section */}
-      <section className="max-w-7xl mx-auto px-6 py-24 md:py-32">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1" data-aos="fade-right">
-            <div className="inline-block mb-4 px-4 py-1 bg-blue-50 rounded-full">
-              <span className="text-blue-800 text-sm font-semibold">
+      <section className="max-w-7xl mx-auto px-6 py-28 md:py-36">
+        <div className="grid md:grid-cols-2 gap-20 items-center">
+          {/* Left Content */}
+          <div data-aos="fade-right">
+            <div className="inline-block mb-6 px-4 py-1 bg-blue-50 rounded-full">
+              <span className="text-blue-800 text-sm font-medium tracking-wide">
                 OUR VISION
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-              โตเกียวมารีน
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-snug">
+              ความมั่นคงที่ส่งต่อความสบายใจ
             </h2>
 
-            <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
-              {/* ใส่เนื้อหา */}
-              <p>
-                {" "}
-                โตเกียวมารีน บริษัทประกันภัยแรกในประเทศญี่ปุ่น ก่อตั้งขึ้นในปี
-                2422 มีการเติบโตตลอดหลายทศวรรษที่ผ่านมา
-                เรานำเสนอผลิตภัณฑ์และการตอบสนองความต้องการที่หลากหลายของการประกันวินาศภัย
-                และการประกันชีวิต โตเกียวมารีนมีการดำเนินธุรกิจใน 45 ประเทศ
-                และเรายังคงขยายธุรกิจเพิ่มมากขึ้น
-                ซึ่งทำให้เราจัดเป็นหนึ่งในกลุ่มบริษัทประกันภัยและประกันชีวิตที่มีความหลากหลายและมีความมั่นคงทางการเงินมากที่สุดในโลก
-                วันนี้
-                ในฐานะกลุ่มบริษัทประกันภัยที่ใหญ่ที่สุดของประเทศญี่ปุ่นที่มีสินทรัพย์มากกว่า
-                2.10 แสนล้านดอลลาร์สหรัฐฯ (ณ ไตรมาส 2 ปี 2568) และมีพนักงานกว่า
-                43,000 คน
-                โตเกียวมารีนพร้อมที่จะร่วมเป็นพันธมิตรกับคุณเพื่อสร้างความสำเร็จอย่างต่อเนื่องไปด้วยกัน
-              </p>
-            </div>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              เรามุ่งมั่นที่จะสร้างสังคมที่ปลอดภัยและมั่นคง
+              ผ่านผลิตภัณฑ์ประกันภัยที่เชื่อถือได้
+              และบริการที่เข้าใจลูกค้าอย่างแท้จริง
+            </p>
 
-            <div className="mt-8 flex gap-12">
+            <div className="mt-10 flex gap-12">
               <div>
                 <div className="text-4xl font-bold text-blue-900 mb-1">25+</div>
-                <div className="text-slate-600 text-sm">ปีของความเชื่อถือ</div>
+                <div className="text-slate-600 text-sm">ปีแห่งความเชื่อถือ</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-blue-900 mb-1">
@@ -123,50 +95,54 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="order-1 md:order-2 relative" data-aos="fade-left">
-            <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src="/about-tk.webp"
-                alt="สำนักงานโตเกียวมารีน"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          {/* Image */}
+          <div
+            className="order-first md:order-last relative rounded-3xl overflow-hidden shadow-2xl"
+            data-aos="fade-left"
+          >
+            <img
+              src="/about-tk.webp"
+              alt="สำนักงานโตเกียวมารีน"
+              className="w-full h-[420px] md:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action Section */}
+      {/* CTA Section */}
       <section
-        className="relative py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-        data-aos="zoom-in"
+        className="relative py-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-center overflow-hidden"
+        data-aos="fade-up"
       >
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-[#A37500]/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/10 blur-3xl rounded-full translate-x-1/3 translate-y-1/3"></div>
+        </div>
+
+        <div className="relative z-10 max-w-3xl mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-snug">
             มาร่วมเป็นส่วนหนึ่งกับเรา
           </h2>
-          <p className="text-xl text-blue-100 mb-10 leading-relaxed">
+          <p className="text-lg text-blue-100 mb-10 leading-relaxed">
             สร้างความมั่นใจให้กับชีวิตและธุรกิจของคุณ
-            <br />
             ด้วยบริการประกันภัยระดับพรีเมียมจากโตเกียวมารีน
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-[#A37500] text-white font-semibold rounded-4xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              className="group inline-flex items-center justify-center px-8 py-4 bg-[#A37500] text-white font-medium rounded-full shadow-lg hover:shadow-[#A37500]/50 transition-all duration-300"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                ติดต่อเรา
-                <span className="group-hover:translate-x-1 transition-transform">
-                  →
-                </span>
+              ติดต่อเรา
+              <span className="ml-2 group-hover:translate-x-1 transition-transform">
+                →
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </Link>
 
             <Link
               href="/#services"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#A37500] text-white font-semibold rounded-4xl  hover:bg-amber-600 hover:border-amber-700 transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 border border-[#A37500] text-[#A37500] font-medium rounded-full hover:bg-[#A37500] hover:text-white transition-all duration-300"
             >
               ดูบริการของเรา
             </Link>
