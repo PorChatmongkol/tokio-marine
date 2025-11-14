@@ -4,11 +4,50 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
-import Head from "next/head";
+
 import MainInsurance from "./components/tokio-beyond";
 import OurServices from "./components/OurService";
 import TrustedClients from "./components/TrustedClients";
 import AwardsAndAchievements from "./components/AwardsAndAchievements";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  // แทนที่ <title>
+  title: 'ประกันโตเกียวมารีน - ตัวแทนมืออาชีพ วรศักดิ์ ทับห่วง', 
+  // แทนที่ <meta name="description">
+  description: 'วางแผนการลงทุนและประกันสุขภาพครบวงจร ด้วยตัวแทนมืออาชีพ วรศักดิ์ ทับห่วง (หนุ่ม) - ได้รับใบอนุญาตจาก คปภ.',
+  // Meta Tag อื่นๆ
+  keywords: ["ประกันควบการลงทุน", "ประกันสุขภาพ", "ประกันชีวิต", "ตัวแทนประกัน", "วรศักดิ์ ทับห่วง", "โตเกียวมารีน"],
+  authors: [{ name: 'วรศักดิ์ ทับห่วง' }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+        index: true,
+        follow: true,
+    },
+  },
+
+  // Open Graph (OG) - สำหรับโซเชียล
+  openGraph: {
+    title: 'ประกันโตเกียวมารีน - ตัวแทนมืออาชีพ',
+    description: 'วางแผนการลงทุนและประกันสุขภาพครบวงจร ด้วยตัวแทนมืออาชีพ วรศักดิ์ ทับห่วง',
+    url: 'https://tokio-marine.vercel.app/', // **สำคัญ: ต้องเปลี่ยนเป็น URL จริงของคุณ**
+    siteName: 'ประกันโตเกียวมารีน',
+    images: [
+        {
+          url: 'https://tokio-marine.vercel.app/profile-1.jpg', // **สำคัญ: ต้องเปลี่ยนเป็น URL ภาพจริงของคุณ**
+          width: 800,
+          height: 600,
+          alt: 'วรศักดิ์ ทับห่วง - ที่ปรึกษาประกันควบการลงทุน',
+        },
+    ],
+    locale: 'th_TH',
+    type: 'website',
+  },
+  // Twitter Card ก็สามารถกำหนดในนี้ได้
+  // ...
+}
 
 export default function Home() {
   useEffect(() => {
@@ -20,82 +59,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        {/* Basic Meta Tags */}
-        <title>ประกันโตเกียวมารีน - ตัวแทนมืออาชีพ</title>
-        <meta
-          name="description"
-          content="ประกันชั้นนำโดยตัวแทนมืออาชีพ วางแผนการลงทุนและประกันสุขภาพครบวงจร"
-        />
-        <meta
-          name="keywords"
-          content="ประกันควบการลงทุน, ประกันสุขภาพ, ประกันชีวิต, ตัวแทนประกัน, วรศักดิ์ ทับห่วง"
-        />
-        <meta name="author" content="วรศักดิ์ ทับห่วง" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="google-site-verification"
-          content="NvmRC8mrLqVIPWOZXVWLoO6l0eB8vB-sBx9uaJkjt4E"
-        />
-
-        {/* Open Graph */}
-        <meta
-          property="og:title"
-          content="ประกันโตเกียวมารีน - ตัวแทนมืออาชีพ"
-        />
-        <meta
-          property="og:description"
-          content="วางแผนการลงทุนและประกันสุขภาพครบวงจร ด้วยตัวแทนมืออาชีพ วรศักดิ์ ทับห่วง"
-        />
-        <meta
-          property="og:image"
-          content="https://example.com/images/profile-1.jpg"
-        />
-        <meta property="og:url" content="https://yourwebsite.com" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="ประกันโตเกียวมารีน" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="ประกันโตเกียวมารีน - ตัวแทนมืออาชีพ"
-        />
-        <meta
-          name="twitter:description"
-          content="วางแผนการลงทุนและประกันสุขภาพครบวงจร ด้วยตัวแทนมืออาชีพ วรศักดิ์ ทับห่วง"
-        />
-        <meta
-          name="twitter:image"
-          content="https://example.com/images/profile-1.jpg"
-        />
-        <meta name="twitter:site" content="@your_twitter_handle" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              name: "วรศักดิ์ ทับห่วง - ตัวแทนประกัน",
-              image: "https://example.com/images/profile-1.jpg",
-              url: "https://yourwebsite.com",
-              telephone: "+66-1234-5678",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "123 ถนนสุขุมวิท",
-                addressLocality: "กรุงเทพฯ",
-                postalCode: "10110",
-                addressCountry: "TH",
-              },
-              description:
-                "ตัวแทนประกันมืออาชีพ ให้คำปรึกษาด้านประกันชีวิตและประกันสุขภาพ วางแผนการลงทุนครบวงจร",
-            }),
-          }}
-        />
-      </Head>
+      
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-6 overflow-hidden">
