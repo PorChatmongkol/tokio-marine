@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { ShieldCheck, TrendingUp, Award, User } from "lucide-react";
 import { useEffect } from "react";
 import AOS from "aos";
