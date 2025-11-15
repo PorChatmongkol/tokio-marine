@@ -28,7 +28,7 @@ export default function ContactPage() {
         {/* Banner */}
         <div className="w-full rounded-2xl overflow-hidden relative h-[600px]">
           <Image
-            src="/PED_0471.jpg"
+            src="/PED_0471.JPG"
             alt="Insurance Banner"
             fill
             className="object-cover object-center"
