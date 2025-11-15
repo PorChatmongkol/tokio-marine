@@ -145,7 +145,7 @@ function ContactCard({
   details,
   isPhone = false,
 }: {
-  icon: React.ReactNode;
+  icon: React.ReactElement<any>;
   title: string;
   details: string[];
   isPhone?: boolean;
