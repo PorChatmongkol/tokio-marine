@@ -145,7 +145,7 @@ function ContactCard({
   details,
   isPhone = false,
 }: {
-  icon: React.ReactElement<any>;
+  icon: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   title: string;
   details: string[];
   isPhone?: boolean;
@@ -153,7 +153,7 @@ function ContactCard({
   return (
     <div className="group flex items-start gap-5 border border-gray-100 rounded-2xl p-8 bg-white shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
       <div className="w-14 h-14 flex items-center justify-center bg-blue-50 rounded-full transition-all duration-300 group-hover:ring-2 ring-[#0e7490]/50">
-        {React.cloneElement(icon as React.ReactElement, {
+        {React.cloneElement(icon, {
           className: "text-2xl",
           style: { color: COLORS.primary },
         })}
@@ -183,6 +183,7 @@ function ContactCard({
     </div>
   );
 }
+
 
 // --------------------------------------------
 // COMPONENT: SocialIcon
