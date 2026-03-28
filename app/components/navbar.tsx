@@ -31,7 +31,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   { label: "หน้าหลัก", href: "/", icon: Home },
   { label: "เกี่ยวกับเรา", href: "/about", icon: Users },
-  { label: "ติดต่อเรา", href: "/contact", icon: Phone },
+  { label: "สาระความรู้", href: "/content", icon: Phone },
   { label: "ค้นหาสถานพยาบาล", href: "/search-hospital", icon: Building2 },
 ];
 
