@@ -10,7 +10,7 @@ import OurServices from "./components/OurService";
 import TrustedClients from "./components/TrustedClients";
 import AwardsAndAchievements from "./components/AwardsAndAchievements";
 import type { Metadata } from "next";
-import About from "./components/Aboutme";
+
 import CTA from "./components/CTA";
 
 export const metadata: Metadata = {
@@ -69,9 +69,7 @@ export default function Home() {
       {/* Tokio Beyond */}
       <MainInsurance />
 
-      {/* About Me Section – Premium Minimal Apple-style */}
-      <About />
-
+     
       {/* บริการประกันอื่นๆ */}
       <OurServices />
 

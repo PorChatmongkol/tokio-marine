@@ -1,47 +1,37 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Prompt } from "next/font/google"; // 👈 เปลี่ยนตรงนี้
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const prompt = Prompt({
+  subsets: ["latin", "thai"], // 👈 เพิ่ม thai
+  weight: ["300", "400", "500", "600", "700"], // เลือกน้ำหนักได้
+  variable: "--font-prompt",
 });
 
 export const metadata: Metadata = {
   title: "Noum Tokio-Marine",
   description: "ตัวแทนขายประกันชั้นนำโตเกียวมารีน",
   icons: {
-    icon: [
-      { url: "/icon.png", sizes: "192x192", type: "image/png" },
-    ],
+    icon: [{ url: "/icon.png", sizes: "192x192", type: "image/png" }],
   },
   verification: {
-    google: 'NvmRC8mrLqVIPWOZXVWLoO6l0eB8vB-sBx9uaJkjt4E',
+    google: "NvmRC8mrLqVIPWOZXVWLoO6l0eB8vB-sBx9uaJkjt4E",
   },
 };
 
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar/>
+    <html lang="th">
+      <body className={`${prompt.variable} antialiased`}>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
