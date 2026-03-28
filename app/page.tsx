@@ -6,7 +6,7 @@ import Image from "next/image";
 // import components
 import HeroSection from "./components/HeroSection";
 import MainInsurance from "./components/tokio-beyond";
-import OurServices from "./components/OurService";
+
 import TrustedClients from "./components/TrustedClients";
 import AwardsAndAchievements from "./components/AwardsAndAchievements";
 import type { Metadata } from "next";
@@ -70,8 +70,7 @@ export default function Home() {
       <MainInsurance />
 
      
-      {/* บริการประกันอื่นๆ */}
-      <OurServices />
+    
 
       {/* ลูกค้าที่ไว้วางใจ */}
       <TrustedClients />
