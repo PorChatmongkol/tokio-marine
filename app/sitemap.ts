@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: 'https://tokio-marine.vercel.app/contact',
+      url: 'https://tokio-marine.vercel.app/content',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,
