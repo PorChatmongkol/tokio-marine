@@ -3,10 +3,12 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import path from "path";
+import { sub } from "framer-motion/client";
 const plans = [
   {
     id: 1,
     title: "ประกันชีวิต",
+
     desc: "เลือกคุ้มครองชีวิตได้ 5 ปี 10 ปี 15 ปี    ",
     image: "/plan-1.png",
     // image: "/p1.jpg",
@@ -15,41 +17,46 @@ const plans = [
   {
     id: 2,
     title: "ประกันสะสมทรัพย์",
-    desc: "คุ้มครองชีวิตทุกกรณี สูงสุดถึง 1.5 ล้านบาท",
+
+    desc: "คุ้มครองการเสียชีวิตทุกกรณี",
     image: "/plan-2.png",
-    
+
     path: "savings-insurance",
   },
   {
     id: 3,
     title: "ประกันบำนาญ",
+
     desc: "วางแผนเกษียณ รับเงินยาวถึงอายุ 85 ปี",
     image: "/plan-3.png",
-   
+
     path: "pension-insurance",
   },
   {
     id: 4,
     title: "ประกันธุรกิจ/Keyman",
+
     desc: "คุ้มครอง 3 โรคร้ายแรงหลัก จ่ายเต็ม 100%",
     image: "/plan-4.png",
-    
+
     path: "keyman-insurance",
   },
   {
     id: 5,
     title: "ประกันสุขภาพ",
+
     desc: "คุ้มครอง 3 โรคร้ายแรงหลัก จ่ายเต็ม 100%",
     image: "/plan-5.png",
-   
+
     path: "health-insurance",
   },
   {
     id: 6,
     title: "ประกันอุบัติเหตุ",
+
     desc: "คุ้มครอง 3 โรคร้ายแรงหลัก จ่ายเต็ม 100%",
     image: "/plan-6.png",
-   
+
     path: "accident-insurance",
   },
 ];
@@ -90,12 +97,8 @@ export default function InsuranceCards() {
             </div> */}
 
             {/* Content Card */}
-            <div className="absolute bottom-4 left-4 right-4 bg-white rounded-xl p-5 shadow-lg h-[180px] flex flex-col justify-between">
+            <div className="absolute bottom-4 left-4 right-4 bg-white rounded-xl p-5 shadow-lg h-[150px] flex flex-col justify-between">
               <div>
-                <p className="text-xs text-gray-500 mb-1">
-                  ❤️ ประกันชีวิตและอุบัติเหตุ
-                </p>
-
                 <h3 className="text-lg font-bold text-gray-900 mb-2 leading-snug line-clamp-2">
                   {item.title}
                 </h3>
