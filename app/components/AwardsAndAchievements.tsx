@@ -1,100 +1,99 @@
-'use client';
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+"use client";
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const AwardsAndAchievements = () => {
   const awards = [
     {
       id: 1,
-      title: 'รางวัลคุณภาพยอดเยี่ยมประจำปี 2023',
-      description:
-        'ได้รับรางวัลจากสมาคมธุรกิจแห่งประเทศไทย ในฐานะองค์กรที่ให้บริการด้วยมาตรฐานระดับสากล',
-      image: '/award-1.jpg',
+      title: "รางวัลคุณภาพยอดเยี่ยมประจำปี 2023",
+      description: "มาตรฐานระดับสากล",
+      image: "/award-1.jpg",
+      height: "h-[300px]",
     },
     {
       id: 2,
-      title: 'รางวัลนวัตกรรมโดดเด่น',
-      description:
-        'ยกระดับเทคโนโลยีเพื่อประสบการณ์ลูกค้าในยุคใหม่อย่างต่อเนื่อง',
-      image: '/award-2.jpg',
+      title: "รางวัลนวัตกรรมโดดเด่น",
+      description: "เทคโนโลยีล้ำสมัย",
+      image: "/award-2.jpg",
+      height: "h-[420px]",
     },
     {
       id: 3,
-      title: 'รางวัลผู้นำด้านบริการลูกค้า',
-      description:
-        'องค์กรที่ได้รับความพึงพอใจสูงสุดจากการสำรวจความคิดเห็นลูกค้าในปี 2024',
-      image: '/award-3.jpg',
+      title: "รางวัลผู้นำด้านบริการลูกค้า",
+      description: "ความพึงพอใจสูงสุด",
+      image: "/award-3.jpg",
+      height: "h-[260px]",
     },
     {
       id: 4,
-      title: 'Top Partner Recognition',
-      description:
-        'ได้รับการยอมรับจากพันธมิตรระดับโลกในฐานะผู้นำที่น่าเชื่อถือ',
-      image: '/award-4.jpg',
+      title: "Top Partner Recognition",
+      description: "พันธมิตรระดับโลก",
+      image: "/award-4.jpg",
+      height: "h-[380px]",
     },
   ];
 
   return (
-    <section className="relative w-full mx-auto px-6 py-32 bg-black overflow-hidden">
-      {/* แสงพื้นหลัง Apple-style */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-black to-black" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
+    <section className="relative w-full px-6 py-32 bg-black overflow-hidden">
+      {/* Background minimal luxury */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-900 to-black" />
 
-      {/* หัวข้อแบบ Keynote */}
-      <div className="relative z-10 text-center mb-24">
+      {/* Title */}
+      <div className="relative z-10 text-center mb-20">
         <motion.h2
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-gray-100 via-white to-gray-400 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-semibold text-white tracking-wide"
         >
-          Our Awards & Achievements
+          Awards & Achievements
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto"
-        >
-          ความสำเร็จที่สะท้อนถึงความทุ่มเท นวัตกรรม และคุณภาพระดับโลกของเรา
-        </motion.p>
+        <p className="text-gray-500 mt-4 text-sm tracking-wider">
+          EXCELLENCE • TRUST • INNOVATION
+        </p>
       </div>
 
-      {/* การ์ดรางวัล Apple-style */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
+      {/* Masonry Layout */}
+      <div className="relative z-10 columns-1 sm:columns-2 lg:columns-3 gap-6 max-w-6xl mx-auto space-y-6">
         {awards.map((award, index) => (
           <motion.div
             key={award.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="group relative bg-gradient-to-b from-gray-900/80 to-black rounded-3xl overflow-hidden  transition-all duration-700"
+            transition={{ delay: index * 0.1 }}
+            className="break-inside-avoid group"
           >
-            <div className="relative w-full h-64 overflow-hidden">
-              <Image
-                src={award.image}
-                alt={award.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#A37500] transition-colors duration-300">
-                {award.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {award.description}
-              </p>
+            <div className="relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 hover:border-[#A37500]/50 transition-all duration-500">
+              
+              {/* Image */}
+              <div className={`relative w-full ${award.height}`}>
+                <Image
+                  src={award.image}
+                  alt={award.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              </div>
+
+              {/* Content */}
+              <div className="p-5">
+                <h3 className="text-white text-lg font-medium mb-1 group-hover:text-[#A37500] transition">
+                  {award.title}
+                </h3>
+                <p className="text-gray-400 text-xs tracking-wide">
+                  {award.description}
+                </p>
+              </div>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* เอฟเฟกต์แสง Spotlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-radial from-white/10 to-transparent blur-3xl"></div>
+      {/* Soft glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#A37500]/10 blur-3xl rounded-full" />
     </section>
   );
 };

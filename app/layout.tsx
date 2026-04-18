@@ -4,10 +4,12 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import "aos/dist/aos.css";
+import FloatingContactPremium from "./components/CTA";
+import CookieBanner from "./components/CookieBanner";
 
 const prompt = Prompt({
-  subsets: ["latin", "thai"], // 👈 เพิ่ม thai
-  weight: ["300", "400", "500", "600", "700"], // เลือกน้ำหนักได้
+  subsets: ["latin", "thai"], 
+  weight: ["300", "400", "500", "600", "700"], 
   variable: "--font-prompt",
 });
 
@@ -32,6 +34,8 @@ export default function RootLayout({
       <body className={`${prompt.variable} antialiased`}>
         <Navbar />
         {children}
+        <CookieBanner />
+        <FloatingContactPremium />
         <Footer />
       </body>
     </html>

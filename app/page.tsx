@@ -10,6 +10,7 @@ import MainInsurance from "./components/tokio-beyond";
 import TrustedClients from "./components/TrustedClients";
 import AwardsAndAchievements from "./components/AwardsAndAchievements";
 import type { Metadata } from "next";
+import InsuranceCards from "./components/Services";
 
 import CTA from "./components/CTA";
 
@@ -62,23 +63,21 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-hidden bg-white">
       {/* Hero Section */}
       <HeroSection />
 
       {/* Tokio Beyond */}
       <MainInsurance />
 
-     
-    
+      <InsuranceCards />
 
       {/* ลูกค้าที่ไว้วางใจ */}
       <TrustedClients />
 
       {/* ผลงาน */}
       {/* <AwardsAndAchievements /> */}
-      {/* CTA */}
-      <CTA />
-    </>
+      
+    </div>
   );
 }

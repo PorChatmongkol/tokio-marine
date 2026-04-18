@@ -5,104 +5,67 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Users,
-  Award,
-  Clock,
   Calendar,
-  Shield,
   TrendingUp,
   Repeat2,
   Gift,
   DollarSign,
-  CheckCircle,
-  XCircle,
+  ChevronRight,
+  ChevronDown,
+  LayoutDashboard,
+  LucideIcon,
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// ----------------------------------------------------
-// 1. CONSTANTS & HELPER DATA
-// ----------------------------------------------------
-const ACCENT_COLOR = "#D69E2E"; // Gold/Amber
-const ACCENT_BG = "bg-[#D69E2E]";
-
-// กำหนด Type สำหรับ Icon (Lucide Icon)
-type IconType = React.ElementType;
-
-// Data สำหรับ Benefits
-const CORE_BENEFITS: { icon: IconType; title: string; description: string }[] =
-  [
-    {
-      icon: Shield,
-      title: "ความคุ้มครอง + การลงทุน",
-      description:
-        "ผสานผลประโยชน์จากการลงทุนในกองทุนรวม เข้ากับความคุ้มครองชีวิตที่มั่นคง",
-    },
-    {
-      icon: Repeat2,
-      title: "ยืดหยุ่นสูง ปรับได้ตลอดชีวิต",
-      description:
-        "สามารถปรับเพิ่ม/ลดความคุ้มครอง และปรับพอร์ตการลงทุนได้ตามเป้าหมาย",
-    },
-    {
-      icon: DollarSign,
-      title: "ไม่มีค่าดำเนินการเบี้ยหลัก",
-      description:
-        "ไม่มีค่าใช้จ่ายในการดำเนินการประกันภัยสำหรับเบี้ยประกันภัยหลักเพื่อความคุ้มครอง",
-    },
-    {
-      icon: TrendingUp,
-      title: "โอกาสรับผลตอบแทนสูง",
-      description:
-        "เลือกจัดพอร์ตการลงทุนได้เอง ผ่านกองทุนรวมที่บริหารโดยผู้เชี่ยวชาญ",
-    },
-  ];
-
-// Data สำหรับ Tokio Beyond
-const TOKIO_BEYOND_BENEFITS: {
-  icon: IconType;
+// --- Types & Data ---
+interface Benefit {
+  icon: LucideIcon;
   title: string;
   details: string;
-}[] = [
+}
+
+const UI_CONFIG = {
+  ACCENT: "text-[#D69E2E]",
+  BG_ACCENT: "bg-[#D69E2E]",
+  CARD_BG: "bg-slate-800/40 border-slate-700/50 hover:border-[#D69E2E]/50",
+};
+
+const BENEFITS: Benefit[] = [
   {
     icon: Calendar,
-    title: "ผลประโยชน์กรณีครบสัญญา",
-    details:
-      "ได้รับมูลค่ารับซื้อคืนหน่วยลงทุน ณ วันที่ประเมินราคาวันแรก ถัดจากวันครบกำหนดสัญญา",
-  },
-  {
-    icon: Users,
-    title: "ผลประโยชน์กรณีเสียชีวิต",
-    details:
-      "ผู้รับผลประโยชน์จะได้รับจำนวนเงินเอาประกันภัย บวกด้วยมูลค่ารับซื้อคืนหน่วยลงทุน",
-  },
-  {
-    icon: Repeat2,
-    title: "ปรับเปลี่ยนได้ทุกช่วงชีวิต",
-    details:
-      "สามารถปรับเพิ่ม/ลดความคุ้มครอง (ภายใต้เงื่อนไข) และปรับการลงทุนให้เหมาะกับไลฟ์สไตล์",
+    title: "อิสระที่เลือกได้เอง",
+    details: "ปรับเพิ่ม/ลดความคุ้มครอง หรือหยุดพักชำระเบี้ยได้ตามจังหวะชีวิต",
   },
   {
     icon: TrendingUp,
-    title: "เพิ่มโอกาสรับผลตอบแทนสูง",
-    details:
-      "เบี้ยประกันภัยหลักเพื่อความคุ้มครองจะถูกนำไปลงทุนผ่านกองทุนรวมที่คัดสรรแล้ว",
+    title: "ปั้นเงินให้งอกเงย",
+    details: "เพิ่มโอกาสรับผลตอบแทนที่สูงกว่าผ่านกองทุนรวมชั้นนำ",
+  },
+  {
+    icon: Users,
+    title: "ส่งต่อความมั่งคั่ง",
+    details: "ส่งต่อความมั่นคงเป็นมรดกให้คนที่คุณรัก",
   },
   {
     icon: Gift,
-    title: "โบนัสพิเศษ (Loyalty Bonus)",
-    details:
-      "ได้รับโบนัสพิเศษเมื่อชำระเบี้ยครบครั้งที่ 10 (ภายใต้เงื่อนไข: ไม่เคยลดเบี้ยหลักและไม่เคยถอนเงิน)",
+    title: "โบนัสแห่งวินัย",
+    details: "รับ Loyalty Bonus เมื่อชำระเบี้ยต่อเนื่องตามเงื่อนไข",
   },
   {
     icon: DollarSign,
-    title: "สิทธิลดหย่อนภาษี",
-    details:
-      "สามารถนำเบี้ยประกันภัยในส่วนของค่าการประกันภัย และค่าใช้จ่ายในการบริหารกรมธรรม์ หักลดหย่อนภาษีได้สูงสุดถึง 100,000 บาท/ปี",
+    title: "สิทธิประโยชน์ภาษี",
+    details: "ลดหย่อนภาษีได้สูงสุด 100,000 บาท/ปี",
+  },
+  {
+    icon: Repeat2,
+    title: "ความโปร่งใสสูงสุด",
+    details: "ตรวจสอบพอร์ตลงทุนและมูลค่าได้ตลอดเวลา",
   },
 ];
 
-const ADDITIONAL_IMAGES: string[] = [
-  "/tk-1.png",
+const PLAN_IMAGES = [
+  // "/tk-1.png",
   "/tk-2.png",
   "/tk-3.png",
   "/tk-4.png",
@@ -112,325 +75,168 @@ const ADDITIONAL_IMAGES: string[] = [
   "/tk-8.png",
 ];
 
-// ----------------------------------------------------
-// 2. HELPER COMPONENTS & TYPES
-// ----------------------------------------------------
-
-const PRIMARY_COLOR_CLASS = "text-slate-100";
-const SECONDARY_COLOR_CLASS = "text-slate-400";
-
-// Type สำหรับ BenefitCard
-interface BenefitCardProps {
-  icon: IconType;
-  title: string;
-  description: string;
-  delay: number;
-}
-
-// Card สำหรับ 4 Benefits หลัก
-const BenefitCard: React.FC<BenefitCardProps> = ({
-  icon: Icon,
+// --- Sub Components ---
+const SectionHeader = ({
   title,
-  description,
-  delay,
+  subtitle,
+}: {
+  title: string;
+  subtitle?: string;
 }) => (
-  <div
-    className="p-6 md:p-8 rounded-2xl bg-slate-800/70 border border-slate-700 shadow-xl transition-all duration-500 hover:shadow-[0_0_20px_rgba(214,158,46,0.3)] hover:scale-[1.02]"
-    data-aos="fade-up"
-    data-aos-delay={delay}
-  >
-    <div
-      className={`w-14 h-14 flex items-center justify-center rounded-xl ${ACCENT_BG} text-slate-900 mb-4`}
-    >
-      <Icon className="w-7 h-7" />
-    </div>
-    <h3 className={`text-xl font-bold ${PRIMARY_COLOR_CLASS} mb-3`}>{title}</h3>
-    <p className={`text-sm ${SECONDARY_COLOR_CLASS}`}>{description}</p>
+  <div className="text-center mb-12" data-aos="fade-up">
+    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+      {title}
+    </h2>
+    {subtitle && (
+      <p className="text-slate-400 text-lg max-w-2xl mx-auto px-4">
+        {subtitle}
+      </p>
+    )}
+    <div className="w-20 h-1.5 bg-[#D69E2E] mx-auto mt-6 rounded-full" />
   </div>
 );
 
-// Type สำหรับ SuitabilityCard
-interface SuitabilityCardProps {
-  icon: IconType;
-  title: string;
-  details: string[];
-  isSuitable: boolean;
-}
-
-// Card สำหรับ Suitability (เหมาะสม/ไม่เหมาะสม)
-const SuitabilityCard: React.FC<SuitabilityCardProps> = ({
-  icon: Icon,
-  title,
-  details,
-  isSuitable,
-}) => (
+const BenefitItem = ({ icon: Icon, title, details }: Benefit) => (
   <div
-    className={`p-6 rounded-xl border-l-4 ${
-      isSuitable
-        ? "border-green-500 bg-slate-800"
-        : "border-red-500 bg-slate-800/50"
-    }`}
+    className={`flex gap-5 p-6 rounded-2xl border transition-all duration-300 group ${UI_CONFIG.CARD_BG}`}
   >
-    <div className="flex items-center space-x-3 mb-3">
-      <Icon
-        className={`w-6 h-6 ${isSuitable ? "text-green-400" : "text-red-400"}`}
-      />
-      <h4
-        className={`text-lg font-semibold ${
-          isSuitable ? PRIMARY_COLOR_CLASS : SECONDARY_COLOR_CLASS
-        }`}
-      >
-        {title}
-      </h4>
-    </div>
-    <ul className="pl-0 space-y-1">
-      {details.map((detail, i) => (
-        <li key={i} className={`text-sm ${SECONDARY_COLOR_CLASS}`}>
-          {detail}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
-// Type สำหรับ DetailCard
-interface DetailCardProps {
-  icon: IconType;
-  title: string;
-  details: string;
-}
-
-// Card สำหรับ Key Features (รายละเอียด 6 ข้อ)
-const DetailCard: React.FC<DetailCardProps> = ({
-  icon: Icon,
-  title,
-  details,
-}) => (
-  <div className="flex items-start space-x-4 p-4 border-b border-slate-700 hover:bg-slate-800/50 transition duration-300 rounded-lg">
     <div
-      className={`mt-1 flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border-2 border-[${ACCENT_COLOR}] text-[${ACCENT_COLOR}]`}
+      className={`${UI_CONFIG.BG_ACCENT} w-12 h-12 shrink-0 flex items-center justify-center rounded-xl text-slate-900 group-hover:scale-110 transition-transform`}
     >
-      <Icon className="w-4 h-4" />
+      <Icon size={24} />
     </div>
     <div>
-      <h4 className={`text-lg font-semibold ${PRIMARY_COLOR_CLASS}`}>
+      <h4 className="text-white font-bold text-lg mb-1 group-hover:text-[#D69E2E] transition-colors">
         {title}
       </h4>
-      <p className={`text-sm ${SECONDARY_COLOR_CLASS}`}>{details}</p>
+      <p className="text-slate-400 text-sm leading-relaxed">{details}</p>
     </div>
   </div>
 );
 
-// ----------------------------------------------------
-// 3. MAIN COMPONENT
-// ----------------------------------------------------
-
 export default function MainInsurance() {
-  // ใช้ useState สำหรับ state ที่เปลี่ยนไปมาระหว่าง Loading/Loaded เท่านั้น
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<"funds" | "risk">("funds");
+  const [showPlans, setShowPlans] = useState(false);
 
   useEffect(() => {
-    // Init AOS
-    AOS.init({ duration: 1000, once: true, offset: 100 });
-
-    // Hide loading spinner after a delay
-    const timer = setTimeout(() => setIsLoading(false), 800);
+    AOS.init({ duration: 800, once: true });
+    const timer = setTimeout(() => setLoading(false), 600);
     return () => clearTimeout(timer);
   }, []);
 
-  if (isLoading) {
+  if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-[#D69E2E]" />
+      <div className="min-h-screen flex items-center justify-center bg-gray-200">
+        <div className="animate-spin w-12 h-12 border-4 border-t-transparent border-[#D69E2E] rounded-full" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* 1. Header & Headline */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 pt-32">
-        <div className="max-w-7xl mx-auto text-center" data-aos="fade-up">
-          <h1 className="text-6xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-            <span className={`text-[${ACCENT_COLOR}] drop-shadow-lg`}>
-              Tokio Beyond
-            </span>
-            <br /> อนาคตที่มั่นคง ด้วยประกันควบการลงทุน
+    <section className="text-gray-300 selection:bg-[#D69E2E]/30 overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="py-24 px-6">
+        <div
+          className="max-w-5xl mx-auto text-center space-y-8"
+          data-aos="fade-down"
+        >
+          <h1 className="text-4xl md:text-5xl font-black text-[#17303B] leading-tight">
+            ประกันควบการลงทุน
+            <span className="text-[#D69E2E]"> Tokio Beyond</span>
           </h1>
-          <p className={`text-lg ${SECONDARY_COLOR_CLASS} max-w-4xl mx-auto`}>
-            ผสมผสานพลังแห่งความคุ้มครองชีวิตและการลงทุนในกองทุนรวม
-            เพื่อตอบโจทย์เป้าหมายทางการเงินของคุณและเพิ่มโอกาสได้รับผลตอบแทนสูง
+
+          <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            วางแผนอนาคตที่มั่นคงด้วยความคุ้มครองเหนือระดับ <br />
+            ดูแลโดยผู้เชี่ยวชาญ{" "}
+            <span className="text-[#17303B] font-semibold">
+              คุณวรศักดิ์ ทับห่วง
+            </span>
           </p>
-          <Link
-            href="/contact"
-            className={`mt-10 inline-flex items-center px-8 py-4 ${ACCENT_BG} text-slate-900 font-bold text-lg rounded-full shadow-2xl transition-all duration-300 hover:scale-[1.05] hover:shadow-[${ACCENT_COLOR}]/50`}
-          >
-            เริ่มต้นปรึกษาฟรี!
-          </Link>
+
+          <Image
+            src="/banner.png"
+            alt="Tokio Beyond Insurance"
+            width={1200}
+            height={800}
+            className="rounded-2xl shadow-2xl w-full h-auto object-cover object-top"
+          />
         </div>
       </section>
 
-      {/* 2. Section: Why Unit-Linked - เน้น 4 ประโยชน์หลัก */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <h2
-            className={`text-4xl font-bold text-center mb-16 text-[${ACCENT_COLOR}]`}
-            data-aos="fade-up"
-          >
-            ทำไมต้องเลือก Unit-Linked?
-          </h2>
+      {/* Plans Section */}
+      <section className="relative pt-18 pb-6 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+         
+          {/* TOP GRID (2 COL) */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* LEFT: TEXT */}
+            <div className="space-y-6 text-center md:text-left">
+              <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-white">
+                แผนประกัน <span className="text-[#D69E2E]">ระดับพรีเมียม</span>
+              </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {CORE_BENEFITS.map((benefit, index) => (
-              <BenefitCard
-                key={index}
-                icon={benefit.icon}
-                title={benefit.title}
-                description={benefit.description}
-                delay={index * 150 + 100}
+              <p className="text-blue-400 text-lg">
+                สำรวจแผนประกันที่คัดสรรมาเพื่อคุณ ครอบคลุมทุกเป้าหมายชีวิต
+                ทั้งความมั่นคง การออม สุขภาพ และอนาคต
+              </p>
+
+              {/* BUTTON */}
+              <button
+                onClick={() => setShowPlans(!showPlans)}
+                className="inline-flex items-center gap-3 bg-[#A37500] px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-all"
+              >
+                {showPlans ? "ปิดรายละเอียด" : "อ่านเพิ่มเติม"}
+                <ChevronDown
+                  className={`transition-transform duration-500 ${
+                    showPlans ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+            </div>
+
+            {/* RIGHT: IMAGE */}
+            <div className="relative group">
+              <div className="absolute inset-0  rounded-2xl blur-2xl"></div>
+
+              <Image
+                src="/tk-1.png"
+                alt="Insurance Premium"
+                width={800}
+                height={600}
+                className="relative rounded-2xl shadow-2xl transition-transform duration-700 group-hover:scale-105"
               />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Section: Tokio Beyond Detail & Suitability */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12 items-start">
-            {/* 3A: Suitability (ความเหมาะสม) */}
-            <div
-              className="lg:col-span-1 border-r border-slate-700 pr-8"
-              data-aos="fade-right"
-            >
-              <h3 className={`text-3xl font-bold mb-6 text-[${ACCENT_COLOR}]`}>
-                แบบประกันนี้เหมาะสมกับคุณหรือไม่?
-              </h3>
-              <div className="space-y-6">
-                <SuitabilityCard
-                  icon={CheckCircle}
-                  title="เหมาะสมสำหรับ"
-                  details={["ผู้ต้องการความคุ้มครอง และผลตอบแทนจากการลงทุน"]}
-                  isSuitable={true}
-                />
-                <SuitabilityCard
-                  icon={XCircle}
-                  title="ไม่เหมาะสำหรับ"
-                  details={[
-                    "ผู้ต้องการผลตอบแทนการลงทุนแบบการันตี (Fixed Return)",
-                  ]}
-                  isSuitable={false}
-                />
-              </div>
-            </div>
-
-            {/* 3B: Key Features (คุณสมบัติเด่น 6 ข้อ) */}
-            <div className="lg:col-span-2" data-aos="fade-left">
-              <h3 className={`text-3xl font-bold mb-8 text-[${ACCENT_COLOR}]`}>
-                รายละเอียดแบบประกัน โตเกียว บียอนด์
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {TOKIO_BEYOND_BENEFITS.map((item, index) => (
-                  <DetailCard key={index} {...item} />
-                ))}
-              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* 4. Section: Fund Option & Risk - (ใช้รูปภาพเป็นหลัก) */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
-          <h2
-            className={`text-4xl font-bold text-center mb-16 text-[${ACCENT_COLOR}]`}
-            data-aos="fade-up"
+          {/* PLANS GRID (SLIDE DOWN) */}
+          <div
+            className={`mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-700 ${
+              showPlans
+                ? "max-h-[5000px] opacity-100"
+                : "max-h-0 opacity-0 overflow-hidden"
+            }`}
           >
-            แผนประกันชีวิตควบการลุงทุน
-          </h2>
-
-          {/* Image Grid Display */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-16">
-            {ADDITIONAL_IMAGES.map((img, index) => (
+            {PLAN_IMAGES.map((src, i) => (
               <div
-                key={index}
-                className="rounded-xl overflow-hidden shadow-xl"
-                data-aos="zoom-in"
-                data-aos-delay={index * 50}
+                key={i}
+                className="group relative overflow-hidden rounded-2xl shadow-xl"
               >
                 <Image
-                  src={img}
-                  alt={`Fund Image ${index + 1}`}
+                  src={src}
+                  alt={`Insurance Plan ${i + 1}`}
                   width={300}
                   height={200}
-                  className="object-cover w-full h-full"
+                  className="w-full h-full"
                 />
+
+                {/* Overlay */}
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80"></div> */}
               </div>
             ))}
           </div>
-
-          {/* Fund Detail Images (ภาพรายละเอียด 17 กองทุน, ความเสี่ยง) */}
-          <div className="space-y-16">
-            {/* ภาพ 1: 17 กองทุน */}
-            <div className="text-center" data-aos="fade-up">
-              <Image
-                src={"/tokio-beyond-1.jpg"}
-                alt="17 กองทุนให้เลือกลงทุน"
-                width={1000}
-                height={600}
-                className="object-cover rounded-xl shadow-2xl border border-slate-700 mx-auto"
-              />
-              <p className={`mt-4 text-lg font-medium text-[${ACCENT_COLOR}]`}>
-                ตารางแสดงรายละเอียดกองทุนรวมที่คัดสรร
-              </p>
-            </div>
-
-            {/* ภาพ 2: ความเสี่ยง */}
-            <div
-              className="text-center"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <h3 className={`text-3xl font-bold mb-6 ${PRIMARY_COLOR_CLASS}`}>
-                ระดับความเสี่ยงที่ยอมรับได้
-              </h3>
-              <Image
-                src={"/tokio-beyond-3.jpg"}
-                alt="ระดับความเสี่ยง"
-                width={1000}
-                height={600}
-                className="object-cover rounded-xl shadow-2xl border border-slate-700 mx-auto"
-              />
-              <p
-                className={`mt-4 text-lg font-medium ${SECONDARY_COLOR_CLASS}`}
-              >
-                คุณสามารถจัดพอร์ตตามระดับความเสี่ยงที่ยอมรับได้
-              </p>
-            </div>
-          </div>
         </div>
       </section>
-
-      {/* 5. Footer CTA / Disclaimer */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 text-center bg-slate-900/80">
-        <div className="max-w-5xl mx-auto">
-          <p
-            className={`text-sm italic ${SECONDARY_COLOR_CLASS} leading-relaxed`}
-          >
-            ข้อมูลนี้เป็นข้อมูลเบื้องต้นเพื่อประกอบการนำเสนอเท่านั้น
-            ผู้ขอเอาประกันภัยควรศึกษาทำความเข้าใจในเอกสารเสนอขายก่อนการตัดสินใจทำประกัน
-            เมื่อได้รับกรมธรรม์แล้วโปรดศึกษารายละเอียดข้อกำหนดและเงื่อนไขความคุ้มครองรวมทั้งข้อยกเว้น
-            ในกรมธรรม์ประกันภัยที่ออกให้กับผู้ถือกรมธรรม์
-            การพิจารณารับประกันภัยให้เป็นไปตามเกณฑ์ที่บริษัทกำหนด
-          </p>
-          <Link
-            href="/contact"
-            className={`mt-6 inline-flex items-center px-6 py-3 border border-[${ACCENT_COLOR}] text-[${ACCENT_COLOR}] font-bold rounded-full transition-all duration-300 hover:bg-[${ACCENT_COLOR}]/10`}
-          >
-            สอบถามข้อมูลเพิ่มเติม (ไม่มีภาระผูกพัน)
-          </Link>
-        </div>
-      </section>
-    </div>
+    </section>
   );
 }

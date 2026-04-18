@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import HeroSection from "../components/Hero";
 
 // ----------------------------------------------------
 // 1. CONSTANTS & HELPER DATA
@@ -226,84 +227,27 @@ const KeymanInsurancePage = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen ${DARK_BG}`}>
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* 1. Hero Section */}
-      <section className="py-16 px-4 sm:py-20 sm:px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Content */}
-          <div className="space-y-8" data-aos="fade-right">
-            <div
-              className={`inline-flex items-center px-6 py-2 rounded-full border-2 font-bold text-sm`}
-              style={{
-                borderColor: ACCENT_GOLD,
-                backgroundColor: ACCENT_GOLD,
-                color: "black",
-              }}
-            >
-              <Star className="w-4 h-4 mr-2 text-black" />
-              แผนประกันอุบัติเหตุส่วนบุคคล
-            </div>
+      <HeroSection variant="keyman-insurance" />
 
-            <div>
-              <h1
-                className={`text-6xl lg:text-5xl font-extrabold leading-snug mb-4 ${PRIMARY_COLOR}`}
-              >
-                ประกันอุบัติเหตุ
-                <br />
-                <span className={`text-[${ACCENT_GOLD}]`}>
-                  PA Prestige Care
-                </span>
-              </h1>
-              <p
-                className={`text-xl ${SECONDARY_COLOR} leading-relaxed max-w-lg`}
-              >
-                แผนประกันอุบัติเหตุสุดคุ้ม
-                ช่วยลดภาระของคุณจากค่ารักษาพยาบาลในโรงพยาบาลหากบาดเจ็บจากอุบัติเหตุ
-              </p>
-            </div>
-            <Link
-              href="/contact"
-              className={`inline-flex items-center px-8 py-4 bg-[${ACCENT_DARK_GOLD}] text-white font-bold text-lg rounded-full shadow-2xl transition-all duration-300 hover:scale-[1.05] hover:bg-[${ACCENT_GOLD}]`}
-            >
-              รับใบเสนอราคา
-            </Link>
-          </div>
-
-          {/* Right: Image */}
-          <div className="relative shadow-2xl" data-aos="fade-left">
-            <Image
-              src={insuranceImages[0]}
-              alt="PA Prestige Care Insurance"
-              width={800}
-              height={600}
-              className="w-full h-96 lg:h-[500px] object-cover rounded-3xl"
-            />
+       {/* 2. TITLE INTERMEDIATE (หัวข้อคั่นกลาง) */}
+      <div className="relative z-20 -mt-10 md:-mt-14 px-6">
+        <div className="max-w-4xl mx-auto" data-aos="zoom-in">
+          <div className="bg-white border border-slate-100 shadow-2xl rounded-2xl md:rounded-3xl p-6 md:p-10 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+              ประกันชีวิตตลอดชีพ{" "}
+              <span className="text-[#A37500]">
+                แบบมีเงินคืนที่มีที่เดียวในไทย​
+              </span>
+            </h2>
+            <div className="w-20 h-1.5 bg-[#D69E2E] mx-auto rounded-full mb-4" />
+            <p className="text-slate-500 max-w-xl mx-auto text-sm md:text-base"></p>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* 2. Section: What is PA Prestige Care? (คำจำกัดความ) */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto text-center" data-aos="fade-up">
-          <h2
-            className={`text-4xl lg:text-5xl font-bold mb-8 ${PRIMARY_COLOR}`}
-          >
-            แบบประกัน PA Prestige Care คืออะไร?
-          </h2>
-          <p
-            className={`text-2xl font-medium max-w-4xl mx-auto leading-relaxed text-[${ACCENT_GOLD}]`}
-          >
-            "ประกันอุบัติเหตุที่ครอบคลุมได้มากกว่า"
-          </p>
-          <p className={`text-lg mt-4 ${SECONDARY_COLOR} max-w-3xl mx-auto`}>
-            แบบประกัน PA หรือประกันอุบัติเหตุ PA คือ
-            แผนความคุ้มครองอุบัติเหตุส่วนบุคคลที่ให้ความคุ้มครองหลากหลาย
-            สมัครง่ายและสะดวกสบาย ไม่ต้องสำรองจ่ายเงินค่ารักษาพยาบาลล่วงหน้า
-            พร้อมสามารถเลือกซื้อความคุ้มครองเพิ่มเติมกรณีกระดูกแตกหัก
-            หรือรับการชดเชยรายได้ระหว่างเข้ารับการรักษาตัวในโรงพยาบาล
-          </p>
-        </div>
-      </section>
+     
 
       {/* 3. Section: Why Buy (เหตุผลที่ต้องซื้อ - 4 ข้อ) */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">

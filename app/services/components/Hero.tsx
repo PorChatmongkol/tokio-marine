@@ -6,13 +6,73 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import { ShieldCheck, TrendingUp, Award } from "lucide-react";
 
-export default function HeroSection() {
+type HeroVariant =
+  | "life-insurance"
+  | "saving-insurance"
+  | "pension-insurance"
+  | "keyman-insurance"
+  | "health-insurance"
+  | "accident-insurance";
+
+interface HeroProps {
+  variant: HeroVariant;
+}
+
+export default function HeroSection({ variant }: HeroProps) {
   useEffect(() => {
     Aos.init({
       duration: 800,
       once: true,
     });
   }, []);
+
+  // ✅ ใช้ variant จริง
+  const heroContent = {
+    "life-insurance": {
+      title: "วางแผนอนาคต",
+      highlight: "ด้วยประกันชีวิต",
+      subtitle: "Life Insurance",
+      desc: "สร้างหลักประกันให้คนที่คุณรัก พร้อมความคุ้มครองระยะยาว",
+      image: "/life.jpg",
+    },
+    "saving-insurance": {
+      title: "ประกันสะสมทรัพย์",
+      highlight: "พร้อมผลตอบแทน",
+      subtitle: "Saving Insurance",
+      desc: "หนือกว่าการออมที่ได้รับความคุ้มครอง​ คือ​ ผลตอบแทนจากส่วนต่างเบี้ยที่ชำระเข้ามาสูงที่สุดในวงการประกัน IRR​ 3% แผนเดียวในประเทศไทย​และมีให้เลือกมากกว่า​ 30​ แผนเพื่อให้เหมาะสมกับช่วงเวลาที่คุณต้องการ​",
+      image: "/saving.jpg",
+    },
+    "pension-insurance": {
+      title: "เกษียณอย่างมั่นใจ",
+      highlight: "มีเงินใช้ทุกเดือน",
+      subtitle: "Pension Insurance",
+      desc: "เตรียมความพร้อมสำหรับชีวิตหลังเกษียณอย่างมั่นคง",
+      image: "/pension.jpg",
+    },
+    "keyman-insurance": {
+      title: "ปกป้องธุรกิจของคุณ",
+      highlight: "จากความเสี่ยงสำคัญ",
+      subtitle: "Keyman Insurance",
+      desc: "ดูแลบุคลากรสำคัญขององค์กรให้ธุรกิจดำเนินต่อได้",
+      image: "/keyman.jpg",
+    },
+    "health-insurance": {
+      title: "สุขภาพที่ดี",
+      highlight: "คือสิ่งสำคัญ",
+      subtitle: "Health Insurance",
+      desc: "คุ้มครองค่ารักษาพยาบาล ครอบคลุมทุกสถานการณ์",
+      image: "/health.jpg",
+    },
+    "accident-insurance": {
+      title: "อุบัติเหตุไม่คาดคิด",
+      highlight: "ป้องกันได้",
+      subtitle: "Accident Insurance",
+      desc: "คุ้มครองทันทีเมื่อเกิดเหตุไม่คาดฝัน",
+      image: "/accident.jpg",
+    },
+  };
+
+  const data = heroContent[variant];
 
   return (
     <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24 px-6 overflow-hidden">
@@ -58,21 +118,18 @@ export default function HeroSection() {
             {/* Text */}
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-black leading-tight text-white">
-                วางแผนอนาคต
+                {data.title}
                 <span className="block text-blue-400">
-                  ด้วยประกันควบการลงทุน
+                  {data.highlight}
                 </span>
               </h1>
 
               <h2 className="text-xl md:text-2xl font-semibold text-orange-400">
-                วรศักดิ์ ทับห่วง (หนุ่ม)
+                {data.subtitle}
               </h2>
 
               <p className="text-sm text-slate-300 leading-relaxed">
-                ใกล้เคียงคำว่ากองทุนสำหรับการเกษียณได้มากที่สุด
-                เพราะไม่มีการเก็บค่าธรรมเนียมแรกเข้า​ 5​ ปีแรก​
-                ทำให้เงินคงเหลือในพอร์ตการลงทุนมาถึง​ 90% และ​
-                กองทุนที่โตเกียวมารีนเลือกมาเป็นกองทุนที่มีผลประกอบการยอดเยี่ยม
+                {data.desc}
               </p>
             </div>
           </div>
@@ -82,8 +139,8 @@ export default function HeroSection() {
             <div className="relative z-10">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-slate-700/30">
                 <Image
-                  src="/profile-1.jpg"
-                  alt="วรศักดิ์ ทับห่วง - ที่ปรึกษาการเงินมืออาชีพ"
+                  src={data.image}
+                  alt={data.subtitle}
                   width={600}
                   height={600}
                   className="object-cover w-full h-auto transition-transform duration-700 hover:scale-105"

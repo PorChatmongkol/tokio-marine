@@ -97,7 +97,7 @@ const DropdownMenu = ({
     <div className="relative ">
       <button
         onClick={onToggle}
-        className={`relative px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-between ${
+        className={`relative cursor-pointer px-4 py-2 rounded-2xl text-sm font-semibold transition-all duration-200 flex items-center justify-between ${
           isOpen || currentPath?.startsWith("/services/")
             ? "text-white shadow-md bg-[#A37500]"
             : "text-gray-700 hover:text-white hover:shadow-md hover:bg-[#D69E2E]"
@@ -214,10 +214,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className="relative dark:bg-gray-900 mx-auto" 
+      className="relative dark:bg-gray-900 mx-auto fixed top-0 z-50 w-full" 
       
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
@@ -228,6 +228,7 @@ export default function Navbar() {
                 className=" object-contain"
                 width={150}
                 height={150}
+                 loading="eager" 
               />
             </Link>
           </div>
